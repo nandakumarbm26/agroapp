@@ -58,7 +58,7 @@ if($category == 1)
             $_SESSION['logged_in'] = true;
 
             $_SESSION['picStatus'] = 0;
-            $_SESSION['picExt'] = png;
+           
 
             $sql = "SELECT * FROM farmer WHERE fusername='$user'";
             $result = mysqli_query($conn, $sql);
@@ -90,7 +90,7 @@ if($category == 1)
 
             Please click this link to activate your account:
 
-            http://localhost/AgroCulture/Login/verify.php?email=".$email."&hash=".$hash;
+            http://localhost/FarmFriend/Login/verify.php?email=".$email."&hash=".$hash;
 
             //$check = mail( $to, $subject, $message_body );
 
@@ -146,7 +146,7 @@ else
 
             Please click this link to activate your account:
 
-            http://localhost/AgroCulture/Login/verify.php?email=".$email."&hash=".$hash;
+            http://localhost/FarmFriend/Login/verify.php?email=".$email."&hash=".$hash;
 
             //$check = mail( $to, $subject, $message_body );
 

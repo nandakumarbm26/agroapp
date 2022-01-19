@@ -20,7 +20,7 @@
 <!DOCTYPE html>
     <html >
      <head>
-        <title>AgroCulture</title>
+        <title>FarmFriend</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="../bootstrap\css\bootstrap.min.css" rel="stylesheet">
@@ -84,7 +84,7 @@
                 <?php else: ?>
                     <div class="row uniform">
                         <div class="6u 12u$(xsmall)">
-                            <a href=../market.php class="button special">Digital Market</a>
+                            <a href=../productmenu.php class="button special">Digital Market</a>
                         </div>
                         <div class="6u 12u$(xsmall)">
                             <a href="logout.php" class="button special">LOG OUT</a>

@@ -100,7 +100,7 @@
 
 <html>
 	<head>
-		<title>AgroCulture : Blogs</title>
+		<title>FarmFriend : Blogs</title>
 		<meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="bootstrap\css\bootstrap.min.css" rel="stylesheet">
@@ -119,7 +119,7 @@
 		<link rel="stylesheet" href="css/style-xlarge.css" />
 		<link rel="stylesheet" href="Blog/commentBox.css" />
 	</head>
-	<body class="subpage">
+	<body class="subpage" style="background-color: #D9D7F1;">
 
 		<?php
 			require 'menu.php';
@@ -145,9 +145,9 @@
 							$result1 = mysqli_query($conn, $sql);
 							$numComment = mysqli_num_rows($result1);
 					?>
-					<div class="box">
+					<div class="box" style="background-color: whitesmoke;">
 						<h2><?= $row['blogTitle']; ?></h2>
-						<blockquote>
+						<blockquote  style="background-color: #E7FBBE;">
 							<?= $row['blogContent']; ?>
 							<p>--- <?= $row['blogUser']; ?></p>
 							<p><?= $row['blogTime']; ?></p>
