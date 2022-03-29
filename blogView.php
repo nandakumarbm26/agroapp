@@ -122,7 +122,7 @@
 	<body class="subpage" style="background-color: #D9D7F1;">
 
 		<?php
-			require 'menu.php';
+						if($_SESSION['Category']!=2)require 'menu.php';
 
 		?>
 

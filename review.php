@@ -31,10 +31,13 @@
 		</noscript>
 </head>
 <body>
-
-
+<?php
+        			if($_SESSION['Category']!=2)echo `
+<div onclick="document.getElementById('a4').style.display='none'" style="margin-left:80%; color:white; background-color:red">CLOSE</div>
+`?>
 				<?php
-					require 'menu.php';
+					if($_SESSION['Category']!=2)require 'menu.php';
+
 
 					$sql="SELECT * FROM fproduct WHERE pid = '$pid'";
 					$result = mysqli_query($conn, $sql);
@@ -42,8 +45,8 @@
 
 					$fid = $row['fid'];
 					$sql = "SELECT * FROM farmer WHERE fid = '$fid'";
-					$result = mysqli_query($conn, $sql);
-					$frow = mysqli_fetch_assoc($result);
+					$res = mysqli_query($conn, $sql);
+					$frow = mysqli_fetch_assoc($res);
 
 					$picDestination = "images/productImages/".$row['pimage'];
 
@@ -57,12 +60,14 @@
 								<div class="col-12 col-sm-6">
 									<p style="font: 50px Times new roman;"><?= $row['product']; ?></p>
 									<p style="font: 30px Times new roman;">Product Owner : <?= $frow['fname']; ?></p>
-									<p style="font: 30px Times new roman;">Price : <?= $row['price'].' /-'; ?></p>
+									<p style="font: 30px Times new roman;">Price per 100kg : <?= $row['price'].' /-'; ?></p>
+									<p style="font: 30px Times new roman;">Quantity Available : <?= $row['quantity']; ?></p>
+									<p style="font: 30px Times new roman;">Ammount : <?= $row['price']*$row['quantity'].' /-'; ?></p>
 								</div>
 							</div><br />
 							<div class="row">
-								<div class="col-12 col-sm-12" style="font: 25px Times new roman;">
-									<?= $row['pinfo']; ?>
+								<div class="col-12 col-sm-12" style="font: 25px Times new roman; color:white; font-weight:bold; background-color:#003300; border-radius: 10px;" style="overflow: scroll;">
+									<?php echo "".$row['pinfo'].""; ?>
 								</div>
 							</div>
 						</div>

@@ -9,9 +9,9 @@
 		$productInfo = $_POST['pinfo'];
 		$productPrice = dataFilter($_POST['price']);
 		$fid = $_SESSION['id'];
-
-		$sql = "INSERT INTO fproduct (fid, product, pcat, pinfo, price)
-			   VALUES ('$fid', '$productName', '$productType', '$productInfo', '$productPrice')";
+		$quantity=$_POST['quantity'];
+		$sql = "INSERT INTO fproduct (fid, product, pcat, pinfo, price,quantity)
+			   VALUES ('$fid', '$productName', '$productType', '$productInfo', '$productPrice',	'$quantity')";
 		$result = mysqli_query($conn, $sql);
 		if(!$result)
 		{
@@ -24,6 +24,7 @@
 
 		$pic = $_FILES['productPic'];
 		$picName = $pic['name'];
+
 		$picTmpName = $pic['tmp_name'];
 		$picSize = $pic['size'];
 		$picError = $pic['error'];
@@ -134,22 +135,27 @@
 								  <option value="Grains" style="color: black;">Grains</option>
 							  </select>
 						</div>
+						
 					  </div>
 					  <div class="col-sm-6">
 						<input type="text" name="pname" id="pname" value="" placeholder="Product Name" style="background-color:white;color: black;" />
 					  </div>
+					  <div class="col-sm-6">
+							<input type="text" id="quantity" name="quantity" placeholder="Quantity in quintals" style="background-color:white;color: black;"  required/>
+						</div>
+						<div class="col-sm-6">
+					  <input type="text" name="price" id="price" value="" placeholder="Price per quintals	" style="background-color:white;color: black;" />
+					</div>
 				</div>
 				<br>
 				<div>
-					<textarea  name="pinfo" id="pinfo" rows="12"></textarea>
+					<textarea style="background-color: white; color:black"  name="pinfo" id="pinfo" rows="12" >Description Of product</textarea>
 				</div>
 			<br>
 			<div class="row">
-				<div class="col-sm-6">
-					  <input type="text" name="price" id="price" value="" placeholder="Price" style="background-color:white;color: black;" />
-				</div>
-				<div class="col-sm-6">
-					<button class="button fit" style="width:auto; color:black;">Submit</button>
+				
+				<div class="col-sm-6" style="margin-left:50%">
+					<button class="button fit" style="width:auto; background-color:darkgreen;">Submit</button>
 				</div>
 			</div>
 			</form>

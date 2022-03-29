@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$mobile = dataFilter($_POST['mobile']);
 	$user = dataFilter($_POST['uname']);
 	$email = dataFilter($_POST['email']);
+	$id = dataFilter($_POST['id']);
 	$pass =	dataFilter(password_hash($_POST['pass'], PASSWORD_BCRYPT));
 	$hash = dataFilter( md5( rand(0,1000) ) );
 	$category = dataFilter($_POST['category']);
@@ -21,13 +22,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $_SESSION['Hash'] = $hash;
     $_SESSION['Addr'] = $addr;
     $_SESSION['Rating'] = 0;
-}
+    $_SESSION['id'] = $id;
+
+}   
 
 
 require '../db.php';
 
 $length = strlen($mobile);
-
+// $flag=false;
+// for( $i ;$i<strlen($name);$i++){
+//     if(is_int($name[$i])){
+//         $flag=true;
+//     }
+// }
+// if($flag){
+//     $_SESSION['message'] = "Invalid Name Please enter valid Name !!!";
+// 	header("location: error.php");
+// 	die();
+// }
 if($length != 10)
 {
 	$_SESSION['message'] = "Invalid Mobile Number !!!";
@@ -40,7 +53,7 @@ if($category == 1)
     $sql = "SELECT * FROM farmer WHERE femail='$email'";
 
     $result = mysqli_query($conn, "SELECT * FROM farmer WHERE femail='$email'") or die($mysqli->error());
-
+    
     if ($result->num_rows > 0 )
     {
         $_SESSION['message'] = "User with this email already exists!";
@@ -49,8 +62,8 @@ if($category == 1)
     }
     else
     {
-    	$sql = "INSERT INTO farmer (fname, fusername, fpassword, fhash, fmobile, femail, faddress)
-    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr')";
+    	$sql = "INSERT INTO farmer (fname, fusername, fpassword, fhash, fmobile, femail, faddress,id)
+    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr','$id')";
 
     	if (mysqli_query($conn, $sql))
     	{
@@ -96,9 +109,10 @@ if($category == 1)
 
             header("location: profile.php");
     	}
+        
     	else
     	{
-    	    //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    	    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     	    $_SESSION['message'] = "Registration failed!";
             header("location: error.php");
     	}
@@ -119,8 +133,8 @@ else
     }
     else
     {
-    	$sql = "INSERT INTO buyer (bname, busername, bpassword, bhash, bmobile, bemail, baddress)
-    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr')";
+    	$sql = "INSERT INTO buyer (bname, busername, bpassword, bhash, bmobile, bemail, baddress,gstin)
+    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr','$id')";
 
     	if (mysqli_query($conn, $sql))
     	{
@@ -155,7 +169,7 @@ else
     	else
     	{
     	    //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    	    $_SESSION['message'] = "Registration not successfull!";
+    	    $_SESSION['message'] = "Registration not successfull! Check validity of Id";
             header("location: error.php");
     	}
     }

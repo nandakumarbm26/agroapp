@@ -1019,12 +1019,12 @@ body.landing #header {
 }
 
 .wrapper.style1 {
-  background-color: #3ba666;
-  -moz-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-  -webkit-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-  -o-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-  -ms-background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
-  background-image: linear-gradient(60deg, #4dac71 50%, #3ba666 50%);
+  background-color: #81a63b;
+  -moz-background-image: linear-gradient(60deg, #4c7517 50%, #c9f194 50%);
+  -webkit-background-image: linear-gradient(60deg, #4c7517 50%, #c9f194 50%);
+  -o-background-image: linear-gradient(60deg, #4c7517 50%, #c9f194 50%);
+  -ms-background-image: linear-gradient(60deg, #4c7517 50%, #c9f194 50%);
+  background-image: linear-gradient(60deg, #4c7517 50%, #365310 50%);
   color: #ffffff;
 }
 

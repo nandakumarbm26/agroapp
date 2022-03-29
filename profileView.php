@@ -38,6 +38,7 @@
 
         <?php
             require 'menu.php';
+             
         ?>
 
         <section id="one" class="wrapper style1 align">
@@ -77,20 +78,43 @@
                         </div>
                         <div class="col-sm-3"></div>
                     </div>
+                   <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <b><font size="+1" color="black"><?php if($_SESSION['Category']){
+                                echo "FRUITS ID :";
+                            }else{
+                                echo "GSTIN :";
+                            }  ?></font></b>
+                            <font size="+1"><?php echo $_SESSION['Id'];?></font>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
                         <div class="12u$">
                             <center>
                                 <div class="row uniform">
-                                    <div class="3u 12u$(large)">
+                                    <!-- <div class="3u 12u$(large)">
                                         <a href="changePassPage.php" class="btn btn-danger" style="text-decoration: none;">Change Password</a>
                                     </div>
                                     <div class="3u 12u$(large)">
                                         <a href="profileEdit.php" class="btn btn-danger" style="text-decoration: none;">Edit Profile</a>
-                                    </div>
+                                    </div> -->
                                     <div class="3u 12u$(xsmall)">
             							<a href="uploadProduct.php" class="btn btn-danger" style="text-decoration: none;">Upload Product</a>
             						</div>
+                                    <div class="3u 12u$(xsmall)">
+            							<a href="productProfile.php" class="btn btn-danger" style="text-decoration: none;">My Products</a>
+            						</div>
+                                    <div class="3u 12u$(xsmall)" onclick="document.getElementById('a1').style.display='block'">
+            							<a  class="btn btn-danger" style="text-decoration: none;">My Sales</a>
+            						</div>
                                     <div class="3u 12u$(large)">
                                         <a href="Login/logout.php" class="btn btn-danger" style="text-decoration: none;">LOG OUT</a>
+                                    </div>
+                                    <div id="a1" style="display: none;">
+                                        <?php 
+                                            require 'transactions.php';
+                                        ?>
                                     </div>
                                 </div>
                             </center>

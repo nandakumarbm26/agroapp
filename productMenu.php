@@ -27,9 +27,9 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 	</head>
 	<body class>
-
+		
 		<?php
-			require 'menu.php';
+			if($_SESSION['Category']!=2)require 'menu.php';
 			function dataFilter($data)
 			{
 				$data = trim($data);
@@ -37,6 +37,7 @@
 				$data = htmlspecialchars($data);
 				return $data;
 			}
+			
 		?>
 
 		<!-- One -->

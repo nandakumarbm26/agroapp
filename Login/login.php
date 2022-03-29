@@ -38,7 +38,8 @@ if($category == 1)
             $_SESSION['picExt'] = $User['picExt'];
             $_SESSION['logged_in'] = true;
             $_SESSION['Category'] = 1;
-            $_SESSION['Rating'] = 0;
+            $_SESSION['Rating'] = $User['frating'];
+            $_SESSION['Id']=$User['id'];
 
             if($_SESSION['picStatus'] == 0)
             {
@@ -62,7 +63,7 @@ if($category == 1)
         }
     }
 }
-else
+else if($category == 0)
 {
     $sql = "SELECT * FROM buyer WHERE busername='$user'";
     $result = mysqli_query($conn, $sql);
@@ -91,7 +92,7 @@ else
             $_SESSION['Active'] = $User['bactive'];
             $_SESSION['logged_in'] = true;
             $_SESSION['Category'] = 0;
-
+            $_SESSION['Id']=$User['id'];
             //echo $_SESSION['Email']."  ".$_SESSION['Name'];
 
             header("location: profile.php");
@@ -102,6 +103,20 @@ else
             $_SESSION['message'] = "Invalid User Credentials!";
             header("location: error.php");
         }
+    }
+}
+else{
+    if($_POST['pass']=='admin@FF'){
+        $_SESSION['logged_in'] = true;
+        $_SESSION['Category'] = 2;
+        $_SESSION['Active'] = 1;
+        $_SESSION['Username'] = 'admin';
+
+        header("location: ../admin.php");
+    }
+    else{
+        $_SESSION['message'] = "Invalid Admin Credentials!";
+            header("location: error.php");
     }
 }
 

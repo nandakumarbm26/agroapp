@@ -2,30 +2,47 @@
 	session_start();
 	require 'db.php';
     $pid = $_GET['pid'];
+
+    $sql="SELECT * FROM fproduct WHERE pid = '$pid'";
+	$res= mysqli_query($conn, $sql);
+	$row = mysqli_fetch_assoc($res);
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
-        $name = $_POST['name'];
+    {   
+         
+        $name = $_SESSION['Name'];
         $city = $_POST['city'];
         $mobile = $_POST['mobile'];
         $email = $_POST['email'];
         $pincode = $_POST['pincode'];
         $addr = $_POST['addr'];
         $bid = $_SESSION['id'];
+        $quantity=$_POST['quantity'];
+        $amount=$_POST['quantity']*$row['price'];
 
-        $sql = "INSERT INTO transaction (bid, pid, name, city, mobile, email, pincode, addr)
-                VALUES ('$bid', '$pid', '$name', '$city', '$mobile', '$email', '$pincode', '$addr')";
+        if($quantity<=$row['quantity']){
+        $sql = "INSERT INTO transaction (bid, pid, name, city, mobile, email, pincode, addr,quantity,amount)
+                VALUES ('$bid', '$pid', '$name', '$city', '$mobile', '$email', '$pincode', '$addr','$quantity','$amount')";
         $result = mysqli_query($conn, $sql);
         if($result)
         {
             $_SESSION['message'] = "Order Succesfully placed! <br /> Thanks for shopping with us!!!";
             header('Location: Login/success.php');
+            
         }
         else {
             echo $result->mysqli_error();
             //$_SESSION['message'] = "Sorry!<br />Order was not placed";
             //header('Location: Login/error.php');
         }
+    }else{
+            
+            $_SESSION['message'] = "Sorry!<br />Required quantity not available";
+            header('Location: Login/error.php');
+
     }
+    }
+    
 ?>
 
 
@@ -58,27 +75,34 @@
 
     <?php
         require 'menu.php';
+          
     ?>
 
 
     <section id="main" class="wrapper" >
         <div class="container">
+         
         <center>
                 <h2>Transaction Details</h2>
         </center>
         <section id="two" class="wrapper style2 align-center">
         <div class="container">
             <center>
+                <div class="col-sm-12">
+                    <div class="col-sm-6" style="background-color:#00640050;font-weight:bold;">Product Name: &emsp;  <?= $row['product']?></div>
+                    <div class="col-sm-6" style="background-color:#00640050;font-weight:bold;">Quantity Available:  &emsp; <?= $row['quantity']?></div>
+                </div>
                 <form method="post" action="buyNow.php?pid=<?= $pid; ?>" style="border: 1px solid black; padding: 15px;">
                     <center>
                     <div class="row uniform">
                         <div class="6u 12u$(xsmall)">
-                            <input type="text" name="name" id="name" value="" placeholder="Name" required/>
+                            <input type="text" name="quantity" id="quantity" value="" placeholder="Quantity" required/>
                         </div>
                         <div class="6u 12u$(xsmall)">
                             <input type="text" name="city" id="city" value="" placeholder="City" required/>
                         </div>
                     </div>
+
                     <div class="row uniform">
                         <div class="6u 12u$(xsmall)">
                             <input type="text" name="mobile" id="mobile" value="" placeholder="Mobile Number" required/>
@@ -89,13 +113,16 @@
                         </div>
                     </div>
                     <div class="row uniform">
+                        
+                        <div class="8u 12u$(xsmall)">
+                            <input type="text" name="addr" id="addr" value="" placeholder="Delivery Address" style="width:80%" required/>
+                        </div>
                         <div class="4u 12u$(xsmall)">
                             <input type="text" name="pincode" id="pincode" value="" placeholder="Pincode" required/>
                         </div>
-                        <div class="8u 12u$(xsmall)">
-                            <input type="text" name="addr" id="addr" value="" placeholder="Address" style="width:80%" required/>
-                        </div>
+
                     </div>
+                    
                     <br />
                     <p>
                         <input type="submit" value="Confirm Order" />

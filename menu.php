@@ -29,6 +29,7 @@
 				</div>
 				<nav id="nav">
 					<ul >
+						<li><a onclick="document.getElementById('id03').style.display='block'"><span class="glyphicon glyphicon-user"></span> Admin</a></li>
 						<li><a href="index.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
 						<li><a href="myCart.php"><span class="glyphicon glyphicon-shopping-cart"> MyCart</a></li>
 						<li><a href="<?= $link; ?>"><span class="<?php echo $logo; ?>"></span><?php echo" ". $loginProfile; ?></a></li>

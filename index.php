@@ -52,8 +52,8 @@
 
 			</section>
 
-		<!-- One -->
-			<!-- <section id="one" class="wrapper style1 align-center">
+		
+			 <section id="one" class="wrapper style1 align-center">
 				<div class="container">
 					<header>
 						<h2>FarmFriend</h2>
@@ -74,7 +74,7 @@
 						</section>
 					</div>
 				</div>
-			</section> -->
+			</section> 
 
 
 		<!-- Footer -->
@@ -99,11 +99,11 @@
 			</div>
 			<div>
 				<i class="fa fa-phone"></i>
-				<p style="font-size:20px">123456789</p>
+				<p style="font-size:20px">9538727397</p>
 			</div>
 			<div>
 				<i class="fa fa-envelope"></i>
-				<p style="font-size:20px"><a href="mailto:FarmFriend@gxyz.com" style="color:white">FarmFriend@gxyz.com</a></p>
+				<p style="font-size:20px"><a href="mailto:farmfriend@gmail.com" style="color:white">farmfriend@gmail.com</a></p>
 			</div>
 		</div>
 
@@ -169,7 +169,41 @@
   </form>
 </div>
 
+<div id="id03" class="modal">
 
+  <form class="modal-content animate" action="Login/login.php" method='POST'>
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+    <h3>Admin Login</h3>
+							<form method="post" action="Login/login.php">
+								<div class="row uniform 50%">
+									<div class="7u$">
+										<h3>Admin : Admin@FarmFriend</h3>
+										<p style="color: red;">Access denied for users.</p>
+									</div>
+									<div class="7u$">
+										<input type="password" name="pass" id="pass" value="" placeholder="Password" style="width:80%" required/>
+									</div>
+								</div>
+
+									<center>
+									<div class="row uniform">
+										<div class="7u 12u$(small)">
+											<input type="submit" value="Login" />
+										</div>
+									</div>
+									</center>
+								</div>
+							</form>
+						</section>
+</div>
+    </div>
+    </div>
+  </form>
+</div>
 <div id="id02" class="modal">
 
   <form class="modal-content animate" action="Login/signUp.php" method='POST'>
@@ -179,13 +213,13 @@
 
     <div class="container">
 
-<section>
+			<section>
 							<h3>SignUp</h3>
 							<form method="post" action="Login/signUp.php">
 								<center>
 								<div class="row uniform">
 									<div class="3u 12u$(xsmall)">
-										<input type="text" name="name" id="name" value="" placeholder="Name" required/>
+										<input type="text" name="name" pattern="[A-Z a-z]+" id="name" value="" placeholder="Name" required/>
 									</div>
 									<div class="3u 12u$(xsmall)">
 										<input type="text" name="uname" id="uname" value="" placeholder="UserName" required/>
@@ -193,7 +227,7 @@
 								</div>
 								<div class="row uniform">
 									<div class="3u 12u$(xsmall)">
-										<input type="text" name="mobile" id="mobile" value="" placeholder="Mobile Number" required/>
+										<input type="text" name="mobile" pattern="[0-9]+"  id="mobile" value="" placeholder="Mobile Number" required/>
 									</div>
 
 									<div class="3u 12u$(xsmall)">
@@ -202,10 +236,15 @@
 								</div>
 								<div class="row uniform">
 									<div class="3u 12u$(xsmall)">
+										<input type="text" name="id" id="id" value="" placeholder="Fruits ID OR GSTIN" required/>
+									</div>
+								</div>
+								<div class="row uniform">
+									<div class="3u 12u$(xsmall)">
 			                            <input type="password" name="password" id="password" value="" placeholder="Password" required/>
 			                        </div>
 			                        <div class="3u 12u$(xsmall)">
-			                            <input type="password" name="pass" id="pass" value="" placeholder="Retype Password" required/>
+			                            <input type="password"  name="pass" id="pass" value="" placeholder="Retype Password" required/>
 			                        </div>
 								</div>
 								<div class="row uniform">
@@ -214,18 +253,18 @@
 									</div>
 								</div>
 								<div class="row uniform">
-									<p>
-			                            <b>Category : </b>
-			                        </p>
-			                        <div class="3u 12u$(small)">
-			                            <input type="radio" id="farmer" name="category" value="1" >
-			                            <label for="farmer">Farmer</label>
-			                        </div>
-			                        <div class="3u 12u$(small)">
-			                            <input type="radio" id="buyer" name="category" value="0" checked>
-			                            <label for="buyer">Buyer</label>
-			                        </div>
-								</div>
+										<p>
+				                            <b>Category : </b>
+				                        </p>
+				                        <div class="3u 12u$(small)">
+				                            <input type="radio" id="farmer" name="category" value="1" checked>
+				                            <label for="farmer">Farmer</label>
+				                        </div>
+				                        <div class="3u 12u$(small)">
+				                            <input type="radio" id="buyer" name="category" value="0">
+				                            <label for="buyer">Buyer</label>
+				                        </div>
+									</div>
 								<div class="row uniform">
 									<div class="3u 12u$(small)">
 										<input type="submit" value="Submit" name="submit" class="special" /></li>
