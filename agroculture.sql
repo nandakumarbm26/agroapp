@@ -202,7 +202,9 @@ CREATE TABLE `transaction` (
   `mobile` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `pincode` varchar(255) NOT NULL,
-  `addr` varchar(255) NOT NULL
+  `addr` varchar(255) NOT NULL,
+  `quantity` int(255) NOT NULL,
+  `amount` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
