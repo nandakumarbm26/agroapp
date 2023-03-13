@@ -62,8 +62,8 @@ if($category == 1)
     }
     else
     {
-    	$sql = "INSERT INTO farmer (fname, fusername, fpassword, fhash, fmobile, femail, faddress,id)
-    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr','$id')";
+    	$sql = "INSERT INTO farmer (fname, fusername, fpassword, fhash, fmobile, femail, faddress)
+    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr')";
 
     	if (mysqli_query($conn, $sql))
     	{
@@ -133,8 +133,8 @@ else
     }
     else
     {
-    	$sql = "INSERT INTO buyer (bname, busername, bpassword, bhash, bmobile, bemail, baddress,gstin)
-    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr','$id')";
+    	$sql = "INSERT INTO buyer (bname, busername, bpassword, bhash, bmobile, bemail, baddress)
+    			VALUES ('$name','$user','$pass','$hash','$mobile','$email','$addr')";
 
     	if (mysqli_query($conn, $sql))
     	{

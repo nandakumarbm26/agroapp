@@ -234,11 +234,7 @@
 										<input type="email" name="email" id="email" value="" placeholder="Email" required/>
 									</div>
 								</div>
-								<div class="row uniform">
-									<div class="3u 12u$(xsmall)">
-										<input type="text" name="id" id="id" value="" placeholder="Fruits ID OR GSTIN" required/>
-									</div>
-								</div>
+								
 								<div class="row uniform">
 									<div class="3u 12u$(xsmall)">
 			                            <input type="password" name="password" id="password" value="" placeholder="Password" required/>
@@ -252,19 +248,21 @@
 										<input type="text" name="addr" id="addr" value="" placeholder="Address" style="width:80%" required/>
 									</div>
 								</div>
+								<div>
 								<div class="row uniform">
 										<p>
 				                            <b>Category : </b>
 				                        </p>
 				                        <div class="3u 12u$(small)">
-				                            <input type="radio" id="farmer" name="category" value="1" checked>
+				                            <input type="radio" id="farmer" name="category" value="1">
 				                            <label for="farmer">Farmer</label>
 				                        </div>
 				                        <div class="3u 12u$(small)">
-				                            <input type="radio" id="buyer" name="category" value="0">
+				                            <input type="radio" id="buyer" name="category" value="0" checked>
 				                            <label for="buyer">Buyer</label>
 				                        </div>
 									</div>
+</div>
 								<div class="row uniform">
 									<div class="3u 12u$(small)">
 										<input type="submit" value="Submit" name="submit" class="special" /></li>

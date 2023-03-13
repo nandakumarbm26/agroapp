@@ -80,14 +80,7 @@
                     </div>
                    <div class="row">
                         <div class="col-sm-3"></div>
-                        <div class="col-sm-6">
-                            <b><font size="+1" color="black"><?php if($_SESSION['Category']){
-                                echo "FRUITS ID :";
-                            }else{
-                                echo "GSTIN :";
-                            }  ?></font></b>
-                            <font size="+1"><?php echo $_SESSION['Id'];?></font>
-                        </div>
+                        
                         <div class="col-sm-3"></div>
                     </div>
                         <div class="12u$">

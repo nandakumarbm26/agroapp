@@ -123,7 +123,8 @@ CREATE TABLE `fproduct` (
   `pinfo` varchar(255) NOT NULL,
   `price` float NOT NULL,
   `pimage` varchar(255) NOT NULL DEFAULT 'blank.png',
-  `picStatus` int(10) NOT NULL DEFAULT '0'
+  `picStatus` int(10) NOT NULL DEFAULT '0',
+  `quantity` int(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
