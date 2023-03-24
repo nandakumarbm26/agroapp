@@ -76,20 +76,22 @@ $pid = $_GET['pid'];
 
 		<br /><br />
 		<?php
-		if ($_SESSION['category'] != 1)
-			`<div class="12u$">
-                            <center>
-                                <div class="row uniform">
-                                    <div class="6u 12u$(large)">
-                                        <a href="myCart.php?flag=1&pid=<?= $pid; ?>" class="btn btn-primary" style="text-decoration: none;"><span class="glyphicon glyphicon-shopping-cart"> AddToCart</a>
-                                    </div>
-                                    <div class="6u 12u$(large)">
-                                        <a href="buyNow.php?pid=<?= $pid; ?>" class="btn btn-primary" style="text-decoration: none;">Buy Now</a>
-                                    </div>
-                                </div>
-                            </center>
-                        </div>`
-
+		if ($_SESSION['category'] != 1) :
+		?>
+			<div class="12u$">
+				<center>
+					<div class="row uniform">
+						<div class="6u 12u$(large)">
+							<a href="myCart.php?flag=1&pid=<?= $pid; ?>" class="btn btn-primary" style="text-decoration: none;"><span class="glyphicon glyphicon-shopping-cart"> AddToCart</a>
+						</div>
+						<div class="6u 12u$(large)">
+							<a href="buyNow.php?pid=<?= $pid; ?>" class="btn btn-primary" style="text-decoration: none;">Buy Now</a>
+						</div>
+					</div>
+				</center>
+			</div>
+		<?php
+		endif;
 		?>
 
 		<div class="container">
