@@ -1,30 +1,24 @@
 <?php
-    session_start();
+session_start();
 
-    $user = dataFilter($_POST['uname']);
-    $pass = $_POST['pass'];
-    $category = dataFilter($_POST['category']);
+$user = dataFilter($_POST['uname']);
+$pass = $_POST['pass'];
+$category = dataFilter($_POST['category']);
+$_SESSION['category'] = $category;
+require '../db.php';
 
-    require '../db.php';
-
-if($category == 1)
-{
+if ($category == 1) {
     $sql = "SELECT * FROM farmer WHERE fusername='$user'";
     $result = mysqli_query($conn, $sql);
     $num_rows = mysqli_num_rows($result);
 
-    if($num_rows == 0)
-    {
+    if ($num_rows == 0) {
         $_SESSION['message'] = "Invalid User Credentialss!";
         header("location: error.php");
-    }
-
-    else
-    {
+    } else {
         $User = $result->fetch_assoc();
 
-        if (password_verify($_POST['pass'], $User['fpassword']))
-        {
+        if (password_verify($_POST['pass'], $User['fpassword'])) {
             $_SESSION['id'] = $User['fid'];
             $_SESSION['Hash'] = $User['fhash'];
             $_SESSION['Password'] = $User['fpassword'];
@@ -39,48 +33,36 @@ if($category == 1)
             $_SESSION['logged_in'] = true;
             $_SESSION['Category'] = 1;
             $_SESSION['Rating'] = $User['frating'];
-            $_SESSION['Id']=$User['id'];
+            $_SESSION['Id'] = $User['id'];
 
-            if($_SESSION['picStatus'] == 0)
-            {
+            if ($_SESSION['picStatus'] == 0) {
                 $_SESSION['picId'] = 0;
                 $_SESSION['picName'] = "profile0.png";
-            }
-            else
-            {
+            } else {
                 $_SESSION['picId'] = $_SESSION['id'];
-                $_SESSION['picName'] = "profile".$_SESSION['picId'].".".$_SESSION['picExt'];
+                $_SESSION['picName'] = "profile" . $_SESSION['picId'] . "." . $_SESSION['picExt'];
             }
             //echo $_SESSION['Email']."  ".$_SESSION['Name'];
 
             header("location: profile.php");
-        }
-        else
-        {
+        } else {
             //echo mysqli_error($conn);
             $_SESSION['message'] = "Invalid User Credentials!";
             header("location: error.php");
         }
     }
-}
-else if($category == 0)
-{
+} else if ($category == 0) {
     $sql = "SELECT * FROM buyer WHERE busername='$user'";
     $result = mysqli_query($conn, $sql);
     $num_rows = mysqli_num_rows($result);
 
-    if($num_rows == 0)
-    {
+    if ($num_rows == 0) {
         $_SESSION['message'] = "Invalid User Credentialss!";
         header("location: error.php");
-    }
-
-    else
-    {
+    } else {
         $User = $result->fetch_assoc();
 
-        if (password_verify($_POST['pass'], $User['bpassword']))
-        {
+        if (password_verify($_POST['pass'], $User['bpassword'])) {
             $_SESSION['id'] = $User['bid'];
             $_SESSION['Hash'] = $User['bhash'];
             $_SESSION['Password'] = $User['bpassword'];
@@ -92,40 +74,36 @@ else if($category == 0)
             $_SESSION['Active'] = $User['bactive'];
             $_SESSION['logged_in'] = true;
             $_SESSION['Category'] = 0;
-            $_SESSION['Id']=$User['id'];
+            $_SESSION['Id'] = $User['id'];
             //echo $_SESSION['Email']."  ".$_SESSION['Name'];
 
             header("location: profile.php");
-        }
-        else
-        {
+        } else {
             //echo mysqli_error($conn);
             $_SESSION['message'] = "Invalid User Credentials!";
             header("location: error.php");
         }
     }
-}
-else{
-    if($_POST['pass']=='admin@FF'){
+} else {
+    if ($_POST['pass'] == 'admin@FF') {
         $_SESSION['logged_in'] = true;
         $_SESSION['Category'] = 2;
         $_SESSION['Active'] = 1;
         $_SESSION['Username'] = 'admin';
-
+        $_SESSION['Email'] = "farmfriend@gmail.com";
+        $_SESSION['Name'] = "ADMIN AT FARM FRIEND";
+        $_SESSION['Mobile'] = "9876543211";
         header("location: ../admin.php");
-    }
-    else{
+    } else {
         $_SESSION['message'] = "Invalid Admin Credentials!";
-            header("location: error.php");
+        header("location: error.php");
     }
 }
 
-    function dataFilter($data)
-    {
-    	$data = trim($data);
-     	$data = stripslashes($data);
-    	$data = htmlspecialchars($data);
-      	return $data;
-    }
-
-?>
+function dataFilter($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
