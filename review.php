@@ -76,7 +76,7 @@ $pid = $_GET['pid'];
 
 		<br /><br />
 		<?php
-		if ($_SESSION['category'] != 1) :
+		if ($_SESSION['category'] == 0) :
 		?>
 			<div class="12u$">
 				<center>
